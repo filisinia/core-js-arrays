@@ -41,15 +41,9 @@ function getIntervalArray(start, end) {
  */
 function sumArrays(arr1, arr2) {
   if (arr1.length > arr2.length) {
-    return arr1.map((elem, index) => {
-      if (!arr2[index]) return elem;
-      return elem + arr2[index];
-    });
+    return arr1.map((elem, index) => (arr2[index] ? elem + arr2[index] : elem));
   }
-  return arr2.map((elem, index) => {
-    if (!arr1[index]) return elem;
-    return elem + arr1[index];
-  });
+  return arr2.map((elem, index) => (arr1[index] ? elem + arr1[index] : elem));
 }
 
 /**
