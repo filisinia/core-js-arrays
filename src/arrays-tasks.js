@@ -319,8 +319,6 @@ function calculateBalance(arr) {
   return diff.reduce((sum, elem) => sum + elem);
 }
 
-// console.log('result =', calculateBalance([ [ 10, 8 ], [ 5, 1 ] ]));
-
 /**
  * Breaks an array into chunks of the specified size.
  *
@@ -333,8 +331,20 @@ function calculateBalance(arr) {
  *    createChunks(['a', 'b', 'c', 'd', 'e'], 2) => [['a', 'b'], ['c', 'd'], ['e']]
  *    createChunks([10, 20, 30, 40, 50], 1) => [[10], [20], [30], [40], [50]]
  */
-function createChunks(/* arr, chunkSize */) {
-  throw new Error('Not implemented');
+function createChunks(arr, chunkSize) {
+  let res = [];
+
+  if (arr.length >= chunkSize) {
+    res.push(arr.slice(0, chunkSize));
+  } else if (arr.length !== 0) {
+    res.push(arr);
+  }
+
+  if (arr.length !== 0) {
+    res = res.concat(createChunks(arr.slice(chunkSize), chunkSize));
+  }
+
+  return res;
 }
 
 /**
