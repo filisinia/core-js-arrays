@@ -395,8 +395,6 @@ function getFalsyValuesCount(arr) {
   return arr.filter((elem) => !elem).length;
 }
 
-// console.log(getFalsyValuesCount([1, '', 3]));
-
 /**
  * Creates an identity matrix of the specified size.
  *
@@ -415,8 +413,16 @@ function getFalsyValuesCount(arr) {
  *                              [0,0,0,1,0],
  *                              [0,0,0,0,1]]
  */
-function getIdentityMatrix(/* n */) {
-  throw new Error('Not implemented');
+function getIdentityMatrix(n) {
+  const emptyMatrix = new Array(n).fill([]);
+  let positionOne = 0;
+
+  return emptyMatrix.map(() => {
+    const subArr = new Array(n).fill(0);
+    subArr[positionOne] = 1;
+    positionOne += 1;
+    return subArr;
+  });
 }
 
 /**
